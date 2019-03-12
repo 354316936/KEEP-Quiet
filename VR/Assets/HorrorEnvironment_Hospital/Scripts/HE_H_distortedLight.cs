@@ -3,10 +3,10 @@ using System.Collections;
 
 public class HE_H_distortedLight : MonoBehaviour {
 
-	public Color distortColor = Color.white;
-	private Color baseColor = Color.white;
+    private Color distortColor = Color.black;
+	private Color baseColor = Color.black;
 
-	public float blinkFrequency = 1f;
+    private float blinkFrequency = 1.5f;
 	private float blinkIterator = 0f;
 
 	private Light myLight;

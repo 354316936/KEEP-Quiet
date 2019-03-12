@@ -41,8 +41,7 @@ public class physicWalk : MonoBehaviour {
 		
 		speed = maxWalkSpeed;
 	}
-	
-	public virtual float jump
+    public virtual float jump
 	{
 		get 
 		{
@@ -71,7 +70,8 @@ public class physicWalk : MonoBehaviour {
 	float fr = 0f;
 	void Update()
 	{
-		if( GetComponent<Rigidbody>().velocity.magnitude > 0f && grounded )
+        Debug.Log(grounded);
+        if ( GetComponent<Rigidbody>().velocity.magnitude > 0f && grounded )
 		{
 			fr += Time.deltaTime;
 
@@ -105,7 +105,7 @@ public class physicWalk : MonoBehaviour {
 	void FixedUpdate ()
 	{
 		///Jump iteration
-		if( !canJump )
+		if( !canJump && grounded)
 		{
 			canJumpCounter += Time.fixedDeltaTime;
 			if( canJumpCounter >= 1f )
@@ -125,11 +125,14 @@ public class physicWalk : MonoBehaviour {
         	if( hit.collider.tag == "GROUND" )
 			{
 				grounded = true;
-			}
+               
+
+            }
 			else
 			{
 				grounded = false;
-			}
+                
+            }
 		}
 		else
 		{
@@ -154,26 +157,29 @@ public class physicWalk : MonoBehaviour {
 			if( vertical != 0f && horizontal != 0f ) GetComponent<Rigidbody>().AddForce( (( forceV * vertical ) + ( transform.right * horizontal )) * 0.8f );
 			else GetComponent<Rigidbody>().AddForce(( forceV * vertical ) + ( transform.right * horizontal ));
 		}
-	 
-		if( jump != 0f && grounded && canJump )
-		{
-			canJump = false;
-			Vector3 tmp = Vector3.up * jumpSpeed + ( transform.forward * vertical * 0.1f );
-			GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity + tmp;
-		}
-			
-		if( !grounded )
-		{
+	 if(grounded)
+        {
+            if (jump != 0f && grounded && canJump)
+            {
+                canJump = false;
+                Vector3 tmp = Vector3.up * jumpSpeed + (transform.forward * vertical * 0.1f);
+                GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity + tmp;
+            }
 
-			fallingForce = fallingForce + Time.fixedDeltaTime * 5f;
-			GetComponent<Rigidbody>().AddForce( -Vector3.up * 10f * fallingForce );
-		}
-		else
-		{
+            if (!grounded)
+            {
 
-			fallingForce -= (Time.fixedDeltaTime * 10f) + (fallingForce * 0.3f);
-			if( fallingForce < 0f ) fallingForce = 0f;
-		}
+                fallingForce = fallingForce + Time.fixedDeltaTime * 5f;
+                GetComponent<Rigidbody>().AddForce(-Vector3.up * 10f * fallingForce);
+            }
+            else
+            {
+
+                fallingForce -= (Time.fixedDeltaTime * 10f) + (fallingForce * 0.3f);
+                if (fallingForce < 0f) fallingForce = 0f;
+            }
+        }
+		
 
 	 }
 

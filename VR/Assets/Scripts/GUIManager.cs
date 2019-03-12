@@ -12,8 +12,7 @@ public class GUIManager : MonoBehaviour {
 
 	private Player player;
 
-	private GUIText hpText;
-	private GUIText bulletText;
+
 
 
 	// Use this for initialization
@@ -21,9 +20,6 @@ public class GUIManager : MonoBehaviour {
 		instance = this;
 
 		player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-		GUIText[] guiText = this.GetComponentsInChildren<GUIText>();
-		hpText = guiText [0];
-		bulletText = guiText [1];
 	}
 	
 	// Update is called once per frame
@@ -42,19 +38,6 @@ public class GUIManager : MonoBehaviour {
 				UnityEngine.SceneManagement.SceneManager.LoadScene("demo");
 			}
 		}
-	}
-
-
-	public void SubBullet(int subed){
-		bullet -= subed;
-		if(bullet <= 0){
-			bullet = 100 - bullet;
-		}
-		bulletText.text = bullet + " / 100";
-	}
-
-	public void SetHp(int hp){
-		hpText.text = hp.ToString();
 	}
 
 }

@@ -16,15 +16,13 @@ public class Player : MonoBehaviour {
 
 	public int hp;
 
-	private Transform muzzlepoint;
+	private Transform GroundCheck;
 	public LayerMask layerMask;
 	public Transform fx;
 
 	public AudioClip shootSound;
 	private float shootTimer;
 
-    //bool isUpgrade;
-    bool isClicked;
     public int Damage;
 
 
@@ -92,10 +90,6 @@ public class Player : MonoBehaviour {
    //
    // }
     
-    public void HGUpgrade()
-    {
-        isClicked = true;
-    }
    //public void SGIncrease()
    //{
    //    isUpgrade = true;
