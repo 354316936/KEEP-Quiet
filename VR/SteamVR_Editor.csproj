@@ -275,6 +275,21 @@
     <Reference Include="Valve.Newtonsoft.Json">
       <HintPath>C:/Users/Family/Documents/KEEP-Quiet/VR/Assets/SteamVR/Input/Plugins/JSON.NET/Valve.Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="DOTween">
+      <HintPath>C:/Users/Family/Documents/KEEP-Quiet/VR/Assets/VRMovementOculus/DOTween/DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween43">
+      <HintPath>C:/Users/Family/Documents/KEEP-Quiet/VR/Assets/VRMovementOculus/DOTween/DOTween43.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween46">
+      <HintPath>C:/Users/Family/Documents/KEEP-Quiet/VR/Assets/VRMovementOculus/DOTween/DOTween46.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween50">
+      <HintPath>C:/Users/Family/Documents/KEEP-Quiet/VR/Assets/VRMovementOculus/DOTween/DOTween50.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenEditor">
+      <HintPath>C:/Users/Family/Documents/KEEP-Quiet/VR/Assets/VRMovementOculus/DOTween/Editor/DOTweenEditor.dll</HintPath>
+    </Reference>
     <Reference Include="Moq">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.0a7/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.2d.sprite/Tests/Editor/Libs/Moq.dll</HintPath>
     </Reference>

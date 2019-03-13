@@ -67,6 +67,16 @@
     <Compile Include="Assets\HorrorEnvironment_Hospital\Scripts\physicWalk.cs" />
     <Compile Include="Assets\HorrorEnvironment_Hospital\Scripts\physicWalk_MouseLook.cs" />
     <Compile Include="Assets\HorrorEnvironment_Hospital\Scripts\playAnimationOnTriggerEnter.cs" />
+    <Compile Include="Assets\HorrorEnvironment_Hospital\Scripts\Scripts\AutoDestory.cs" />
+    <Compile Include="Assets\HorrorEnvironment_Hospital\Scripts\Scripts\GUIManager.cs" />
+    <Compile Include="Assets\HorrorEnvironment_Hospital\Scripts\Scripts\laser.cs" />
+    <Compile Include="Assets\HorrorEnvironment_Hospital\Scripts\Scripts\Open.cs" />
+    <Compile Include="Assets\HorrorEnvironment_Hospital\Scripts\Scripts\PauseGame.cs" />
+    <Compile Include="Assets\HorrorEnvironment_Hospital\Scripts\Scripts\Player.cs" />
+    <Compile Include="Assets\HorrorEnvironment_Hospital\Scripts\Scripts\start.cs" />
+    <Compile Include="Assets\HorrorEnvironment_Hospital\Scripts\Scripts\WeaponSwithcing.cs" />
+    <Compile Include="Assets\HorrorEnvironment_Hospital\Scripts\Scripts\Zombie.cs" />
+    <Compile Include="Assets\HorrorEnvironment_Hospital\Scripts\Scripts\ZombieGenerator.cs" />
     <Compile Include="Assets\HorrorEnvironment_Hospital\Scripts\setActiveOnAwake.cs" />
     <Compile Include="Assets\HorrorEnvironment_Hospital\Scripts\setActiveOnTriggerEnter.cs" />
     <Compile Include="Assets\HorrorEnvironment_Hospital\Scripts\setParentOnTriggerEnter.cs" />
@@ -355,16 +365,6 @@
     <Compile Include="Assets\Oculus\VoiceMod\Scripts\Helpers\OVRMicInput.cs" />
     <Compile Include="Assets\Oculus\VoiceMod\Scripts\OVRVoiceMod.cs" />
     <Compile Include="Assets\Oculus\VoiceMod\Scripts\OVRVoiceModContext.cs" />
-    <Compile Include="Assets\Scripts\AutoDestory.cs" />
-    <Compile Include="Assets\Scripts\GUIManager.cs" />
-    <Compile Include="Assets\Scripts\laser.cs" />
-    <Compile Include="Assets\Scripts\Open.cs" />
-    <Compile Include="Assets\Scripts\PauseGame.cs" />
-    <Compile Include="Assets\Scripts\Player.cs" />
-    <Compile Include="Assets\Scripts\start.cs" />
-    <Compile Include="Assets\Scripts\WeaponSwithcing.cs" />
-    <Compile Include="Assets\Scripts\Zombie.cs" />
-    <Compile Include="Assets\Scripts\ZombieGenerator.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\VRMovementOculus\Core\VRMovementOculus.cs" />
     <Compile Include="Assets\VRMovementOculus\HelperScripts\LineArcSystem.cs" />
@@ -633,6 +633,9 @@
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.0a7/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Valve.Newtonsoft.Json">
+      <HintPath>C:/Users/Family/Documents/KEEP-Quiet/VR/Assets/SteamVR/Input/Plugins/JSON.NET/Valve.Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
       <HintPath>C:/Users/Family/Documents/KEEP-Quiet/VR/Assets/VRMovementOculus/DOTween/DOTween.dll</HintPath>
@@ -1013,6 +1016,22 @@
     <ProjectReference Include="Oculus.VR.csproj">
       <Project>{0F80154F-13A5-65AF-B091-D623A19107CD}</Project>
       <Name>Oculus.VR</Name>
+    </ProjectReference>
+    <ProjectReference Include="SteamVR_Input_Editor.csproj">
+      <Project>{1F9852F3-1769-CF80-6E5A-D60979F43D4B}</Project>
+      <Name>SteamVR_Input_Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="SteamVR_Editor.csproj">
+      <Project>{CD68D90E-2AD9-25EF-5193-F71346679278}</Project>
+      <Name>SteamVR_Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="SteamVR.csproj">
+      <Project>{728783C8-1D37-2BD7-FB10-3BD4F75D9268}</Project>
+      <Name>SteamVR</Name>
+    </ProjectReference>
+    <ProjectReference Include="SteamVR_Windows_EditorHelper.csproj">
+      <Project>{6E46B84B-7256-99E7-C229-889BFFCF5345}</Project>
+      <Name>SteamVR_Windows_EditorHelper</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

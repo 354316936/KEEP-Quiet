@@ -267,6 +267,9 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
+    <Reference Include="Valve.Newtonsoft.Json">
+      <HintPath>C:/Users/Family/Documents/KEEP-Quiet/VR/Assets/SteamVR/Input/Plugins/JSON.NET/Valve.Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="DOTween">
       <HintPath>C:/Users/Family/Documents/KEEP-Quiet/VR/Assets/VRMovementOculus/DOTween/DOTween.dll</HintPath>
     </Reference>
