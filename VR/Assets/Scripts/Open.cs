@@ -31,16 +31,22 @@ public class Open : MonoBehaviour
             float tiltAroundY = Input.GetAxis("Vertical") * tiltAngle;
             
             Quaternion target = Quaternion.Euler(0, -tiltAroundY, tiltAroundZ);
-        
 
-            // Dampen towards the target rotation
-            transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smooth);
+            if(tiltAroundY < 90.0f)
+            {
+              // Dampen towards the target rotation
+              transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smooth);
+            }
+            if(tiltAroundY>90.0f)
+            {
+                coroutine = WaitAndPrint(2.5f);
+                StartCoroutine(coroutine);
+                GetComponent<BoxCollider>().enabled = false;
+            }
             
         }
         
-        coroutine = WaitAndPrint(2.5f);
-        StartCoroutine(coroutine);
-        GetComponent<BoxCollider>().enabled = false;
+       
     }
 
     IEnumerator WaitAndPrint(float waitTime)
