@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4217373220346163569}
   - component: {fileID: 4380324041475897246}
   - component: {fileID: 9202979917732383239}
+  - component: {fileID: 1340630224}
   m_Layer: 0
   m_Name: FatZombie
   m_TagString: Untagged
@@ -27,9 +28,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 891576351}
-  m_LocalRotation: {x: -0, y: -0.7687744, z: -0, w: 0.63952017}
+  m_LocalRotation: {x: 0, y: -0.76877487, z: 0, w: 0.6395196}
   m_LocalPosition: {x: -16.87, y: 0.120000005, z: -0.39}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_Children:
   - {fileID: 5858426214770021025}
   - {fileID: 7601161982472659477}
@@ -46,10 +47,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.35583767
+  m_Radius: 0.46740896
   m_Height: 2.135182
   m_Direction: 1
-  m_Center: {x: 0.0000000031258502, y: 0.8236263, z: -0.1441625}
+  m_Center: {x: -0.0037240067, y: 0.82362634, z: -0.036315735}
 --- !u!114 &4217373220346163569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,7 +75,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 1.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -96,7 +97,7 @@ Animator:
   m_GameObject: {fileID: 891576351}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c8750a719055a3449877f181ab755189, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -105,6 +106,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!54 &1340630224
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891576351}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &126154867430833350
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,6 +710,7 @@ SkinnedMeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0

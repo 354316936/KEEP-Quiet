@@ -2,19 +2,25 @@
 using System.Collections;
 
 public class AutoDestory : MonoBehaviour {
+     public Zombie zombie;
 
-	public float timer = 1f;
-
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		timer -= Time.deltaTime;
-		if(timer <= 0){
-			Destroy(this.gameObject);
-		}
+	
 	}
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag  == "Player")
+        {
+            zombie.OnDeath();
+
+        }
+    }
+
 }

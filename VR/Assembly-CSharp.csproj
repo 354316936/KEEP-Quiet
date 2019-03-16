@@ -80,7 +80,15 @@
     <Compile Include="Assets\HorrorEnvironment_Hospital\Scripts\setActiveOnAwake.cs" />
     <Compile Include="Assets\HorrorEnvironment_Hospital\Scripts\setActiveOnTriggerEnter.cs" />
     <Compile Include="Assets\HorrorEnvironment_Hospital\Scripts\setParentOnTriggerEnter.cs" />
+    <Compile Include="Assets\HorrorEnvironment_Hospital\Scripts\Sound_Script.cs" />
     <Compile Include="Assets\HorrorEnvironment_Hospital\Scripts\toggleFloorLights.cs" />
+    <Compile Include="Assets\MegaBook\Scripts\MegaBookBendMod.cs" />
+    <Compile Include="Assets\MegaBook\Scripts\MegaBookBuilder.cs" />
+    <Compile Include="Assets\MegaBook\Scripts\MegaBookControl.cs" />
+    <Compile Include="Assets\MegaBook\Scripts\MegaBookMatrix.cs" />
+    <Compile Include="Assets\MegaBook\Scripts\MegaBookMouseControl.cs" />
+    <Compile Include="Assets\MegaBook\Scripts\MegaBookPage.cs" />
+    <Compile Include="Assets\MegaBook\Scripts\MegaBookPageAttach.cs" />
     <Compile Include="Assets\Oculus\AudioManager\Scenes\Scripts\TestScript.cs" />
     <Compile Include="Assets\Oculus\AudioManager\Scripts\Audio\AmbienceEmitter.cs" />
     <Compile Include="Assets\Oculus\AudioManager\Scripts\Audio\AudioManager.cs" />
@@ -381,6 +389,7 @@
     <None Include="Assets\Oculus\Avatar\Samples\CrossPlatform\Readme.txt" />
     <None Include="Assets\HorrorEnvironment_Hospital\Scripts\Shaders\Hospital_rimShader_simple.shader" />
     <None Include="Assets\Oculus\Avatar\Resources\Materials\Version1.5\Avatar_PC_SingleComponent.shader" />
+    <None Include="Assets\MegaBook\ReadMe.txt" />
     <None Include="Assets\HorrorEnvironment_Hospital\Scripts\Shaders\Hospital_rimShader_specular.shader" />
     <None Include="Assets\Oculus\SampleFramework\Core\CustomHands\Materials\Hands_DiffBump.shader" />
     <None Include="Assets\VRMovementOculus\DOTween\DOTween46.xml" />
@@ -401,6 +410,7 @@
     <None Include="Assets\Oculus\SampleFramework\license.txt" />
     <None Include="Assets\Oculus\Avatar\Content\Materials\AvatarSurfaceShaderPBSV2.shader" />
     <None Include="Assets\Oculus\Avatar\Resources\Materials\Version1.5\Avatar_Mobile_CombinedMesh.shader" />
+    <None Include="Assets\HorrorEnvironment_Hospital\Scripts\Shaders\ghostshardder.shader" />
     <None Include="Assets\Oculus\Avatar\Content\Materials\AvatarSurfaceShaderPBS.shader" />
     <None Include="Assets\Oculus\SampleFramework\Core\CustomHands\Shaders\Hands_01.shader" />
     <None Include="Assets\VRMovementOculus\DOTween\readme.txt" />

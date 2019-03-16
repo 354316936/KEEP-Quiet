@@ -1,49 +1,58 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ZombieGenerator : MonoBehaviour {
+public class ZombieGenerator : MonoBehaviour
+{
 
-	public Transform zombiePrefab;
+    public Transform zombiePrefab;
 
-	public static int MAX_COUNT = 1;
-	private int count;
+    public static int MAX_COUNT = 1;
+    private int count;
 
-	private float timer;
+    private float timer;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(count >= MAX_COUNT){
-			return;
-		}
+    // Use this for initialization
+    void Start()
+    {
 
-		timer -= Time.deltaTime;
-		if(timer <= 0){
-			timer = Random.value * 15.0f;
-			if(timer < 5){
-				timer = 5;
-			}
+    }
 
-			Transform enemyObj = Instantiate(zombiePrefab, transform.position, Quaternion.identity) as Transform;
-			Zombie zombie = enemyObj.GetComponent<Zombie>();
-			zombie.Init(this);
-		}
-	}
+    // Update is called once per frame
+    void Update()
+    {
+        if (count >= MAX_COUNT)
+        {
+            return;
+        }
 
-	void OnDrawGizmos(){
-		Gizmos.DrawIcon(transform.position, "../Gizmos/item.png", true);
-	}
+        timer -= Time.deltaTime;
+        if (timer <= 0)
+        {
+            timer = Random.value * 30.0f;
+            if (timer < 15)
+            {
+                timer = 15;
+            }
 
-	public void IncrCount(){
-		count++;
-	}
+            Transform enemyObj = Instantiate(zombiePrefab, transform.position, Quaternion.identity) as Transform;
+            Zombie zombie = enemyObj.GetComponent<Zombie>();
+            zombie.Init(this);
+        }
+    }
 
-	public void DecrCount(){
-		count--;
-	}
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawIcon(transform.position, "../Gizmos/item.png", true);
+    }
+
+    public void IncrCount()
+    {
+        count++;
+    }
+
+    public void DecrCount()
+    {
+        count--;
+    }
 
 }

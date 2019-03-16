@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ZN_Female4
-  m_Shader: {fileID: 7, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 3f61fb1a21d1048499e55c2d65a78f3b, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -22,7 +22,14 @@ Material:
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: a3f41d5c6df893046a754405a52474b1, type: 3}
         m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
+        m_Offset: {x: 1, y: 1}
+    m_Floats:
+    - _Amount: 1
+    - _Amplitude: 1
+    - _CutoutThresh: 0.15
+    - _Distance: 1
+    - _Speed: 1
+    - _Transparency: 0.231
     m_Colors:
     - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
+    - _TintColor: {r: 0.04227483, g: 0.3584906, b: 0.17278376, a: 1}

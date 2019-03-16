@@ -62,6 +62,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\MegaBook\Scripts\Editor\MegaBookBuilderEditor.cs" />
+    <Compile Include="Assets\MegaBook\Scripts\Editor\MegaBookPageAttachEditor.cs" />
+    <Compile Include="Assets\MegaBook\Scripts\Editor\MegaBookUndo.cs" />
     <Compile Include="Assets\Oculus\AudioManager\Scripts\Audio\Editor\AudioImportPostProcessor.cs" />
     <Compile Include="Assets\Oculus\AudioManager\Scripts\Audio\Editor\AudioManagerInspector.cs" />
     <Compile Include="Assets\Oculus\AudioManager\Scripts\Audio\Editor\MinMaxPropertyDrawer.cs" />

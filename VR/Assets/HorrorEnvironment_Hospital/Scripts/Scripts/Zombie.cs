@@ -12,10 +12,10 @@ public class Zombie : MonoBehaviour {
 	//寻路代理
 	private UnityEngine.AI.NavMeshAgent agent;
 
-	//动画
-	private Animator animator;
+    //动画
+    private Animator animator;
 
-	public float moveSpeed = 0.5f;
+    private float moveSpeed = 0.5f;
 
 	public int hp;
 
@@ -38,16 +38,16 @@ public class Zombie : MonoBehaviour {
 		agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 		animator = GetComponent<Animator>();
 		capsuleCollider = GetComponent<CapsuleCollider>();
-	}
 
-	public bool IsDeath(){
+    }
+
+    public bool IsDeath(){
 		return hp <= 0;
 	}
 	
 	// Update is called once per frame
-	void Update () {
-			
-		if (animator.IsInTransition (0)) {
+	void Update () { 
+        if (animator.IsInTransition (0)) {
 			return;
 		}
 
@@ -78,7 +78,7 @@ public class Zombie : MonoBehaviour {
 			}else{
 				actTimer -= Time.deltaTime;
 				if(actTimer < 0){
-					agent.SetDestination(OVRCameraRig.transform.position);
+                    agent.SetDestination(OVRCameraRig.transform.position);
 					actTimer = 1;
 				}
 
@@ -96,9 +96,8 @@ public class Zombie : MonoBehaviour {
 					actTimer = 1;
 					animator.SetBool ("idle", true);
 				}
-
-				RotateToPlayer ();
-			}
+                    RotateToPlayer();
+            }
 
 		}else if(InState(state, "death")){
 			CapsuleColliderDisable();
@@ -106,8 +105,8 @@ public class Zombie : MonoBehaviour {
 				OnDeath();
 			}
 		}
-       
-        RotateToPlayer();
+            RotateToPlayer();
+
     }
 
 	bool InState(AnimatorStateInfo state, string stateStr){
@@ -133,13 +132,12 @@ public class Zombie : MonoBehaviour {
 	}
 
 	
-	/*void MoveToPlayer(){
-		agent.SetDestination(player.transform.position);
+	void MoveToPlayer(){
+		agent.SetDestination(OVRCameraRig.transform.position);
 		agent.Move(transform.TransformDirection(new Vector3(0, 0, moveSpeed*Time.deltaTime)));
-	}*/
-	
+	}
 
-	void RotateToPlayer(){
+    void RotateToPlayer(){
 		Vector3 old = transform.eulerAngles;
 		transform.LookAt(OVRCameraRig.transform);
 		float playerY = transform.eulerAngles.y;
@@ -168,7 +166,7 @@ public class Zombie : MonoBehaviour {
 		}
 	}
 
-	void OnDeath(){
+	public void OnDeath(){
 		generator.DecrCount();
 		Destroy(this.gameObject);
 	}

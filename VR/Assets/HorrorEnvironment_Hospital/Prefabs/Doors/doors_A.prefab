@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 3300000}
   - component: {fileID: 2300000}
   - component: {fileID: 6400000}
+  - component: {fileID: 2776564747797398276}
+  - component: {fileID: 8755703127118971189}
+  - component: {fileID: 5914596704499495928}
   m_Layer: 0
   m_Name: doors_A
   m_TagString: Untagged
@@ -95,6 +98,48 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300058, guid: 2cd235bc655a48545b2c61baea3b2c77, type: 3}
+--- !u!114 &2776564747797398276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee6f862f9b1bd0f429c76fb9b0040d3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smooth: 0
+  tiltAngle: 0
+--- !u!114 &8755703127118971189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63262cc8b08c41d4697f563fd8026f78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundPlay: {fileID: 8300000, guid: be2d838002f2a93448524028cb97d1c9, type: 3}
+  Volume: 5
+  Played: 0
+--- !u!65 &5914596704499495928
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1220142, y: 3.2360756, z: 1.7699561}
+  m_Center: {x: -0.16558795, y: 0.034475088, z: -0.8849778}
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0

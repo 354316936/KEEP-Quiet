@@ -5,8 +5,8 @@ using UnityEngine;
 public class Open : MonoBehaviour
 {
 
-    float smooth = 45.0f;
-    float tiltAngle = 90.0f;
+    [SerializeField] float smooth;
+    public float tiltAngle;
     private IEnumerator coroutine;
 
 
@@ -32,8 +32,12 @@ public class Open : MonoBehaviour
             Quaternion target = Quaternion.Euler(0, -tiltAroundY, 0);
             // Dampen towards the target rotation
             transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smooth);
-            coroutine = WaitAndPrint(2.0f);
-            StartCoroutine(coroutine);
+            if(transform.rotation.y < -80.0f)
+            {
+                coroutine = WaitAndPrint(2.0f);
+                StartCoroutine(coroutine);
+            }
+           
         }
    
 
@@ -42,6 +46,6 @@ public class Open : MonoBehaviour
     IEnumerator WaitAndPrint(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        GetComponent<BoxCollider>().enabled = false;
+        GetComponent<BoxCollider>().isTrigger = false;
     }
 }
