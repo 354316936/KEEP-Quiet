@@ -24,7 +24,7 @@ public class HE_H_distortedLight : MonoBehaviour {
             
 			if( blinkIterator >= blinkFrequency )
 			{
-				blinkIterator = Random.Range( 0f, blinkFrequency ) * 5.5f;
+				blinkIterator = Random.Range( 0f, blinkFrequency ) * 10.0f;
             
 				if( myLight.color != distortColor ) myLight.color = distortColor;
 			else myLight.color = baseColor;

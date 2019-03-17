@@ -8,6 +8,8 @@ public class Sound_Script : MonoBehaviour
     public float Volume;
     AudioSource audio;
     public bool Played = false;
+
+    public GameObject gameObject;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +20,13 @@ public class Sound_Script : MonoBehaviour
     {
         if(!Played)
         {
-            audio.PlayOneShot(SoundPlay, Volume);
-            Played = true;
+            if(other.tag=="Player")
+            {
+                gameObject.active = true;
+                audio.PlayOneShot(SoundPlay, Volume);
+                Played = true;
+            }
+          
         }
     }
 }

@@ -9,6 +9,7 @@ public class Zombie : MonoBehaviour {
 	//玩家
 	private OVRCameraRig OVRCameraRig;
 
+  
 	//寻路代理
 	private UnityEngine.AI.NavMeshAgent agent;
 
@@ -78,6 +79,7 @@ public class Zombie : MonoBehaviour {
 			}else{
 				actTimer -= Time.deltaTime;
 				if(actTimer < 0){
+                   
                     agent.SetDestination(OVRCameraRig.transform.position);
 					actTimer = 1;
 				}

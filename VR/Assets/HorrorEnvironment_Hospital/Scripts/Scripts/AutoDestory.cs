@@ -19,7 +19,6 @@ public class AutoDestory : MonoBehaviour {
         if(other.gameObject.tag  == "Player")
         {
             zombie.OnDeath();
-
         }
     }
 

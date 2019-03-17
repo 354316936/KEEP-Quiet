@@ -74,6 +74,7 @@
     <Compile Include="Assets\HorrorEnvironment_Hospital\Scripts\Scripts\PauseGame.cs" />
     <Compile Include="Assets\HorrorEnvironment_Hospital\Scripts\Scripts\Player.cs" />
     <Compile Include="Assets\HorrorEnvironment_Hospital\Scripts\Scripts\start.cs" />
+    <Compile Include="Assets\HorrorEnvironment_Hospital\Scripts\Scripts\Stealth.cs" />
     <Compile Include="Assets\HorrorEnvironment_Hospital\Scripts\Scripts\WeaponSwithcing.cs" />
     <Compile Include="Assets\HorrorEnvironment_Hospital\Scripts\Scripts\Zombie.cs" />
     <Compile Include="Assets\HorrorEnvironment_Hospital\Scripts\Scripts\ZombieGenerator.cs" />
