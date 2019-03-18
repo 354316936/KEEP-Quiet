@@ -13,7 +13,9 @@ permissions and limitations under the License.
 ************************************************************************************/
 
 using System;
+using System.Collections;
 using UnityEngine;
+
 
 /// <summary>
 /// Controls the player's movement in virtual reality.
@@ -150,13 +152,23 @@ public class OVRPlayerController : MonoBehaviour
 	private float buttonRotation = 0f;
 	private bool ReadyToSnapTurn; // Set to true when a snap turn has occurred, code requires one frame of centered thumbstick to enable another snap turn.
 
-	void Start()
+    CharacterController myCC;
+    [SerializeField] private AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
+    private AudioSource m_AudioSource;
+    private float m_StepCycle;
+    private float m_NextStep;
+    [SerializeField] private float m_StepInterval;
+    void Start()
 	{
 		// Add eye-depth as a camera offset from the player controller
 		var p = CameraRig.transform.localPosition;
 		p.z = OVRManager.profile.eyeDepth;
 		CameraRig.transform.localPosition = p;
-	}
+
+        myCC = gameObject.GetComponent<CharacterController>();
+        m_AudioSource = GetComponent<AudioSource>();
+
+    }
 
 	void Awake()
 	{
@@ -201,13 +213,16 @@ public class OVRPlayerController : MonoBehaviour
 
 	void Update()
 	{
-		//Use keys to ratchet rotation
-		if (Input.GetKeyDown(KeyCode.Q))
-			buttonRotation -= RotationRatchet;
-
-		if (Input.GetKeyDown(KeyCode.E))
+        //Use keys to ratchet rotation
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            buttonRotation -= RotationRatchet;
+        }
+        if (Input.GetKeyDown(KeyCode.E))
 			buttonRotation += RotationRatchet;
-	}
+       
+
+    }
 
 	protected virtual void UpdateController()
 	{
@@ -234,6 +249,7 @@ public class OVRPlayerController : MonoBehaviour
 				p.y = -(0.5f * Controller.height) + Controller.center.y;
 			}
 			CameraRig.transform.localPosition = p;
+
 		}
 		else if (InitialPose != null)
 		{
@@ -278,7 +294,7 @@ public class OVRPlayerController : MonoBehaviour
 			moveDirection -= bumpUpOffset * Vector3.up;
 		}
 
-		if (PreCharacterMove != null)
+        if (PreCharacterMove != null)
 		{
 			PreCharacterMove();
 			Teleported = false;
@@ -288,24 +304,25 @@ public class OVRPlayerController : MonoBehaviour
 
 		// Move contoller
 		Controller.Move(moveDirection);
-		Vector3 actualXZ = Vector3.Scale(Controller.transform.localPosition, new Vector3(1, 0, 1));
+        Vector3 actualXZ = Vector3.Scale(Controller.transform.localPosition, new Vector3(1, 0, 1));
 
 		if (predictedXZ != actualXZ)
 			MoveThrottle += (actualXZ - predictedXZ) / (SimulationRate * Time.deltaTime);
-	}
+
+    }
 
 
-
-
-
-	public virtual void UpdateMovement()
+    public virtual void UpdateMovement()
 	{
-		if (HaltUpdateMovement)
-			return;
+        if (HaltUpdateMovement)
+            return;
+
+      
 
 		if (EnableLinearMovement)
 		{
-			bool moveForward = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
+
+            bool moveForward = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
 			bool moveLeft = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
 			bool moveRight = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow);
 			bool moveBack = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
@@ -325,14 +342,18 @@ public class OVRPlayerController : MonoBehaviour
 				dpad_move = true;
 			}
 
-			MoveScale = 1.0f;
 
-			if ((moveForward && moveLeft) || (moveForward && moveRight) ||
-				(moveBack && moveLeft) || (moveBack && moveRight))
-				MoveScale = 0.70710678f;
+            MoveScale = 1.0f;
 
-			// No positional movement if we are in the air
-			if (!Controller.isGrounded)
+            if ((moveForward && moveLeft) || (moveForward && moveRight) ||
+                (moveBack && moveLeft) || (moveBack && moveRight))
+            {
+               
+                MoveScale = 0.70710678f;
+
+            }
+            // No positional movement if we are in the air
+            if (!Controller.isGrounded)
 				MoveScale = 0.0f;
 
 			MoveScale *= SimulationRate * Time.deltaTime;
@@ -342,9 +363,12 @@ public class OVRPlayerController : MonoBehaviour
 
 			// Run!
 			if (dpad_move || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
-				moveInfluence *= 2.0f;
+            {
+                moveInfluence *= 2.0f;
+            }
 
-			Quaternion ort = transform.rotation;
+
+            Quaternion ort = transform.rotation;
 			Vector3 ortEuler = ort.eulerAngles;
 			ortEuler.z = ortEuler.x = 0f;
 			ort = Quaternion.Euler(ortEuler);
@@ -358,9 +382,8 @@ public class OVRPlayerController : MonoBehaviour
 			if (moveRight)
 				MoveThrottle += ort * (transform.lossyScale.x * moveInfluence * BackAndSideDampen * Vector3.right);
 
-
-
-			moveInfluence = Acceleration * 0.1f * MoveScale * MoveScaleMultiplier;
+           
+            moveInfluence = Acceleration * 0.1f * MoveScale * MoveScaleMultiplier;
 
 #if !UNITY_ANDROID // LeftTrigger not avail on Android game pad
 			moveInfluence *= 1.0f + OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger);
@@ -373,9 +396,10 @@ public class OVRPlayerController : MonoBehaviour
 			{
 				primaryAxis.y = Mathf.Round(primaryAxis.y * FixedSpeedSteps) / FixedSpeedSteps;
 				primaryAxis.x = Mathf.Round(primaryAxis.x * FixedSpeedSteps) / FixedSpeedSteps;
-			}
 
-			if (primaryAxis.y > 0.0f)
+            }
+
+            if (primaryAxis.y > 0.0f)
 				MoveThrottle += ort * (primaryAxis.y * transform.lossyScale.z * moveInfluence * Vector3.forward);
 
 			if (primaryAxis.y < 0.0f)
@@ -389,9 +413,10 @@ public class OVRPlayerController : MonoBehaviour
 			if (primaryAxis.x > 0.0f)
 				MoveThrottle += ort * (primaryAxis.x * transform.lossyScale.x * moveInfluence * BackAndSideDampen *
 									   Vector3.right);
-		}
 
-		if (EnableRotation)
+        }
+        ProgressStepCycle(FixedSpeedSteps);
+        if (EnableRotation)
 		{
 			Vector3 euler = transform.rotation.eulerAngles;
 			float rotateInfluence = SimulationRate * Time.deltaTime * RotationAmount * RotationScaleMultiplier;
@@ -460,13 +485,14 @@ public class OVRPlayerController : MonoBehaviour
 
 			transform.rotation = Quaternion.Euler(euler);
 		}
-	}
+        
+    }
 
 
-	/// <summary>
-	/// Invoked by OVRCameraRig's UpdatedAnchors callback. Allows the Hmd rotation to update the facing direction of the player.
-	/// </summary>
-	public void UpdateTransform(OVRCameraRig rig)
+    /// <summary>
+    /// Invoked by OVRCameraRig's UpdatedAnchors callback. Allows the Hmd rotation to update the facing direction of the player.
+    /// </summary>
+    public void UpdateTransform(OVRCameraRig rig)
 	{
 		Transform root = CameraRig.trackingSpace;
 		Transform centerEye = CameraRig.centerEyeAnchor;
@@ -482,7 +508,9 @@ public class OVRPlayerController : MonoBehaviour
 			root.rotation = prevRot;
 		}
 
-		UpdateController();
+       
+
+        UpdateController();
 		if (TransformUpdated != null)
 		{
 			TransformUpdated(root);
@@ -510,6 +538,7 @@ public class OVRPlayerController : MonoBehaviour
 		Controller.Move(Vector3.zero);
 		MoveThrottle = Vector3.zero;
 		FallSpeed = 0.0f;
+
 	}
 
 	/// <summary>
@@ -528,7 +557,7 @@ public class OVRPlayerController : MonoBehaviour
 	public void SetMoveScaleMultiplier(float moveScaleMultiplier)
 	{
 		MoveScaleMultiplier = moveScaleMultiplier;
-	}
+    }
 
 	/// <summary>
 	/// Gets the rotation scale multiplier.
@@ -596,4 +625,36 @@ public class OVRPlayerController : MonoBehaviour
 			transform.rotation = Quaternion.Euler(euler);
 		}
 	}
+
+    private void ProgressStepCycle(float speed)
+    {
+        if (myCC.velocity.sqrMagnitude > 0 && (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0))
+        {
+            m_StepCycle += (myCC.velocity.magnitude + (speed)) * Time.fixedDeltaTime;
+        }
+
+        if (!(m_StepCycle > m_NextStep))
+        {
+            return;
+        }
+
+        m_NextStep = m_StepCycle + m_StepInterval;
+
+        PlayFootStepAudio();
+    }
+
+    private void PlayFootStepAudio()
+    {
+        // pick & play a random footstep sound from the array,
+        // excluding sound at index 0
+        int n = UnityEngine.Random.Range(1, m_FootstepSounds.Length);
+        m_AudioSource.clip = m_FootstepSounds[n];
+        m_AudioSource.PlayOneShot(m_AudioSource.clip);
+        // move picked sound to index 0 so it's not picked next time
+        m_FootstepSounds[n] = m_FootstepSounds[0];
+        m_FootstepSounds[0] = m_AudioSource.clip;
+    }
+
+
+
 }

@@ -23596,6 +23596,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.523
       objectReference: {fileID: 0}
+    - target: {fileID: 526121496, guid: a6de20a493263cd46a00a1bd067944d0, type: 3}
+      propertyPath: m_FootstepSounds
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6de20a493263cd46a00a1bd067944d0, type: 3}
 --- !u!4 &967491459 stripped
@@ -41050,7 +41054,7 @@ PrefabInstance:
     - target: {fileID: 2776564747797398276, guid: 27e6949f6248bbe4aa353a53f0863fbd,
         type: 3}
       propertyPath: tiltAngle
-      value: 90
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 27e6949f6248bbe4aa353a53f0863fbd, type: 3}
       propertyPath: m_Materials.Array.size
