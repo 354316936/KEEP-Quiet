@@ -384,9 +384,10 @@ public class OVRPlayerController : MonoBehaviour
 
            
             moveInfluence = Acceleration * 0.1f * MoveScale * MoveScaleMultiplier;
+            ProgressStepCycle(moveInfluence);
 
 #if !UNITY_ANDROID // LeftTrigger not avail on Android game pad
-			moveInfluence *= 1.0f + OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger);
+            moveInfluence *= 1.0f + OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger);
 #endif
 
 			Vector2 primaryAxis = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
@@ -415,7 +416,6 @@ public class OVRPlayerController : MonoBehaviour
 									   Vector3.right);
 
         }
-        ProgressStepCycle(FixedSpeedSteps);
         if (EnableRotation)
 		{
 			Vector3 euler = transform.rotation.eulerAngles;

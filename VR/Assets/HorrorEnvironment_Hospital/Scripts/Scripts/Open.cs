@@ -19,28 +19,27 @@ public class Open : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+      
     }
-     void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-
         if (other.gameObject.tag == "Player")
         {
 
             float tiltAroundY = Input.GetAxis("Vertical") * tiltAngle;
-            
+
             Quaternion target = Quaternion.Euler(0, -tiltAroundY, 0);
             // Dampen towards the target rotation
             transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smooth);
-            if(transform.rotation.y < -80.0f)
-            {
-                coroutine = WaitAndPrint(2.0f);
-                StartCoroutine(coroutine);
-            }
-           
-        }
-   
 
+
+        }
+
+        if (transform.rotation.y < -80.0f)
+        {
+            coroutine = WaitAndPrint(1.0f);
+            StartCoroutine(coroutine);
+        }
     }
 
     IEnumerator WaitAndPrint(float waitTime)
