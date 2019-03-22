@@ -7,7 +7,7 @@ using System.Collections;
 public class Zombie : MonoBehaviour {
 
 	//玩家
-	private OVRCameraRig OVRCameraRig;
+	private OVRPlayerController OVRPlayerController;
 
   
 	//寻路代理
@@ -35,7 +35,7 @@ public class Zombie : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        OVRCameraRig = GameObject.FindGameObjectWithTag("Player").GetComponent<OVRCameraRig>();
+        OVRPlayerController = GameObject.FindGameObjectWithTag("Player").GetComponent<OVRPlayerController>();
 		agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 		animator = GetComponent<Animator>();
 		capsuleCollider = GetComponent<CapsuleCollider>();
@@ -80,7 +80,7 @@ public class Zombie : MonoBehaviour {
 				actTimer -= Time.deltaTime;
 				if(actTimer < 0){
                    
-                    agent.SetDestination(OVRCameraRig.transform.position);
+                    agent.SetDestination(OVRPlayerController.transform.position);
 					actTimer = 1;
 				}
 
@@ -130,18 +130,18 @@ public class Zombie : MonoBehaviour {
 	}
 
 	bool DistanceToPlayerLessThan(float distance){
-		return Vector3.Distance (transform.position, OVRCameraRig.transform.position) < distance;
+		return Vector3.Distance (transform.position, OVRPlayerController.transform.position) < distance;
 	}
 
 	
 	void MoveToPlayer(){
-		agent.SetDestination(OVRCameraRig.transform.position);
+		agent.SetDestination(OVRPlayerController.transform.position);
 		agent.Move(transform.TransformDirection(new Vector3(0, 0, moveSpeed*Time.deltaTime)));
 	}
 
     void RotateToPlayer(){
 		Vector3 old = transform.eulerAngles;
-		transform.LookAt(OVRCameraRig.transform);
+		transform.LookAt(OVRPlayerController.transform);
 		float playerY = transform.eulerAngles.y;
 
 		float speed = rotateSpeed * Time.deltaTime;
